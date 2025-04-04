@@ -44,7 +44,7 @@ runs:
         } &> /dev/null
 
         MESSAGE="$(git notes --ref=${{ inputs.ref }} show ${{ inputs.sha }} 2> /dev/null || echo "")"
-        echo "::set-output name=message::$MESSAGE"
+        echo "message=$MESSAGE" >> $GITHUB_OUTPUT
 
         if [[ -n "${{ inputs.message }}" ]]; then
           OVERRIDE=""
